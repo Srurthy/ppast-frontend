@@ -1,0 +1,137 @@
+<div class="register-wrap">
+    <div class="row m-0">
+        <div class="col-lg-8 d-none d-md-block col-md-6 p-0 position-fixed">
+            <div class="signup-left">
+                <div class="signup-overlay"></div>
+                <div id="demo" class="carousel slide col-6" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <!-- <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li> -->
+                    </ul>
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <h4>PPA-Tracker</h4>
+                            <p>Prompt Payment & Adjudication Tracker</p>
+                        </div>
+                        <!-- <div class="carousel-item">
+                            <h4>Lorem ipsum dolor </h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur
+                                elit, sed do eiusmod tempor incididunt ut
+                                labore et dolore magna aliqua.</p>
+                        </div>
+                        <div class="carousel-item">
+                            <h4>Lorem ipsum dolor </h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur
+                                elit, sed do eiusmod tempor incididunt ut
+                                labore et dolore magna aliqua.</p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-xs-12 col-md-6 col-sm-12" style=" margin-left: auto; background: white;min-height: 100vh;">
+            <div class="signup-form">
+                <img class="signup-logo" src="/assets/img/login-logo.png" width="28%" />
+                <div class="col-md-11 mx-auto">
+                    <h4>Create Account</h4>
+                    <div class="d-inline-block">
+                        <hr class="hr-login">
+                    </div>
+                    <form [formGroup]="registerFormGroup" (ngSubmit)="onRegisterSubmit(registerFormGroup.value)" autocomplete="off">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <input formControlName="company_name" type="text" class="form-control company-n" placeholder="Company Name" />
+                                <span 
+                                    *ngIf="registerFormGroup.get('company_name').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please provide company name</span>
+                            </div>
+                            <div class="form-group col-6">
+                                <input formControlName="first_name" type="text" class="form-control name" placeholder="First Name" />
+                                <span
+                                    *ngIf="registerFormGroup.get('first_name').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please provide first name</span>
+                            </div>
+                            <div class="form-group col-6">
+                                <input formControlName="last_name" type="text" class="form-control name" placeholder="Last Name" />
+                                <span
+                                    *ngIf="registerFormGroup.get('last_name').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please provide last name</span>
+                            </div>
+                            <div class="form-group col-12">
+                                <textarea formControlName="address" class="form-control adrss" placeholder="Address" rows="3"></textarea>
+                                <span *ngIf="registerFormGroup.get('address').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please provide your address</span>
+                            </div>
+                            <div class="form-group col-6">
+                                <input formControlName="city" type="text" class="form-control city" placeholder="City" />
+                                <span
+                                    *ngIf="registerFormGroup.get('city').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please provide city</span>
+                            </div>
+                            <div class="form-group col-6">
+                                <input formControlName="postal_code" type="text" class="form-control postal" placeholder="Postal Code" />
+                                <span *ngIf="registerFormGroup.get('postal_code').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please provide postal code</span>
+                                <span *ngIf="registerFormGroup.get('postal_code').hasError('maxlength')" class="field-error">Maximum length for postal code is 10</span>
+                            </div>
+                            <div class="form-group col-6">
+                                <input formControlName="province" type="text" class="form-control province" placeholder="Province" />
+                                <span *ngIf="registerFormGroup.get('province').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please provide province</span>
+                            </div>
+                            <div class="form-group col-6">
+                                <input formControlName="country" type="text" class="form-control country" placeholder="Country" />
+                                <span *ngIf="registerFormGroup.get('country').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please provide country</span>
+                            </div>
+                            <div class="form-group col-12">
+                                <input appPhoneNumber formControlName="phone_number" type="text" class="form-control mob" placeholder="Phone Number" />
+                                <span *ngIf="registerFormGroup.get('phone_number').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please provide phone number</span>
+                                <span *ngIf="registerFormGroup.get('phone_number').hasError('maxlength')" class="field-error">Maximum length for phone number is 16</span>
+                            </div>
+                            <div class="form-group col-12">
+                                <input formControlName="email" type="text" class="form-control email" placeholder="Email" />
+                                <span *ngIf="registerFormGroup.get('email').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please enter email</span>
+                                <span *ngIf="registerFormGroup.get('email').hasError('pattern') && registerFormGroup.get('email').dirty"
+                                    class="field-error">Please enter valid email</span>
+                            </div>
+                            <div class="form-group col-12">
+                                <input formControlName="password1" type="password" class="form-control p-r" placeholder="Password" />
+                                <span *ngIf="registerFormGroup.get('password1').hasError('minlength') && registerFormGroupValid === false"
+                                    class="field-error">Password should have at least 8 characters</span>
+                                <span *ngIf="registerFormGroup.get('password1').hasError('required') && registerFormGroup.get('password1').touched"
+                                    class="field-error">Please enter password</span>
+                                <div (click)="showPassword($event)" class="show-password open"></div>
+                            </div>
+                            <div class="form-group col-12">
+                                <input formControlName="password2" type="password" class="form-control p-r" placeholder="Confirm Password" />
+                                <span
+                                    *ngIf="registerFormGroup.get('password1').valid && registerFormGroup.get('password2').hasError('passwordValidation') && registerFormGroup.get('password2').dirty"
+                                    class="field-error">Passwords don't match</span>
+                                <div (click)="showPassword($event)" class="show-password open"></div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <mat-checkbox (change)="termsClick($event)" formControlName="terms">I agree to TNA <a (click)="showTerms()"
+                                            href="javascript:void(0)"> terms & agreements</a></mat-checkbox>
+                                    <span
+                                    *ngIf="registerFormGroup.get('terms').hasError('required') && registerFormGroupValid === false"
+                                    class="field-error">Please Check the T&C</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-block sign-btn">SIGN UP</button>
+                    </form>
+                    <p class="text-center">Already have an account? <a routerLink="/login">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-terms></app-terms>

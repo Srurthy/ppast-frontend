@@ -1,0 +1,52 @@
+<div class="login-wrap d-flex ">
+    <div class="row m-0 align-self-center w-100">
+        <div class="col-md-6 col-sm-12 col-lg-4 mx-auto">
+            <div class="login-inner text-center">
+                <img src="/assets/img/login-logo.png" width="50%" />
+                <div class="login-form-box">
+                    <h4>Welcome to <span>PPA-Tracker</span> </h4>
+                    <p>Prompt Payment & Adjudication Schedule Tracker</p>
+                    <hr class="hr-login">
+                    <div class="row m-0">
+                        <div class="col-md-11 mx-auto">
+                            <form [formGroup]="loginFormGroup" (ngSubmit)="loginSubmit(loginFormGroup.value)" autocomplete="off">
+                                <div class="form-group">
+                                    <input formControlName="username_email" type="text" class="form-control email"
+                                        placeholder="Email Address" />
+                                    <span
+                                        *ngIf="loginFormGroup.get('username_email').hasError('required') && loginFormGroupValid === false"
+                                        class="field-error">Please enter email</span>
+                                    <span
+                                        *ngIf="loginFormGroup.get('username_email').hasError('pattern') && loginFormGroup.get('username_email').dirty"
+                                        class="field-error">Please enter valid email</span>
+                                </div>
+                                <div class="form-group">
+                                    <input formControlName="password" type="password" class="form-control password"
+                                        placeholder="Password" />
+                                    <span
+                                        *ngIf="loginFormGroup.get('password').hasError('required') && loginFormGroupValid === false"
+                                        class="field-error">Please enter password</span>
+                                    <div (click)="showPassword($event)" class="show-password open"></div>
+                                </div>
+                                <!-- remember me -->
+                                <label class="Remember-me">Remember me<input #remember (change)="setRememberMe($event.target)" type="checkbox"><span class="checkmark"></span></label>
+                                <a routerLink="/reset-password" class="forgot-a">Forgot password?</a>
+                                <button type="submit"
+                                    class="btn btn-block sign-btn">SIGN IN</button>
+                                <p>Need an account ? <a routerLink="/register">Sign up</a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ie-incompatible">
+        <div class="ie-incompatible-inner">
+            <img src="/assets/img/ie_logo_PNG14.png">
+            <p>PPA Tracker is incompatible with IE.
+                For a better experience use latest version of Firefox/Chrome/Safari/Edge 
+            </p>
+         </div>      
+    </div>
+</div>
